@@ -53,3 +53,23 @@ if 'items' not in data or not data['items']:
 
 # Crear el contenido Markdown
 markdown_lines = [f"# ✅ {playlist_title_clean}\n"]
+
+for item in data['items']:
+    title = item['snippet']['title']
+
+    # Elimina el nombre de la playlist en cualquier parte del título
+    title = re.sub(re.escape(playlist_title), "", title, flags=re.IGNORECASE)
+
+    # Limpieza final de guiones, espacios y signos
+    title = title.strip(" - -–—:|")
+
+    video_id = item['snippet']['resourceId']['videoId']
+    video_url = f'https://www.youtube.com/watch?v={video_id}'
+    markdown_lines.append(f"- [ ] [{title}]({video_url})")
+
+# Guardar el archivo Markdown
+filename = f"{playlist_title_clean}.md"
+with open(filename, "w", encoding="utf-8") as f:
+    f.write("\n".join(markdown_lines))
+
+print(f"✅ Archivo '{filename}' creado exitosamente.")
