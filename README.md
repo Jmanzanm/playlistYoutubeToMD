@@ -21,6 +21,30 @@ Install dependencies:
 ```bash
 pip install requests
 ```
+## 🐍 Setting Up the Python Environment
+To ensure consistent dependencies and avoid conflicts, it's recommended to use a virtual environment.
+
+### Linux/Mac
+
+```bash
+# Create a virtual environment
+python3 -m venv .venv
+
+# Activate the environment
+source .venv/bin/activate
+
+```
+
+### Windows(CMD)
+
+```cmd
+:: Create a virtual environment
+python -m venv .venv
+
+:: Activate the environment
+.venv\Scripts\activate
+
+```
 
 ## 🔑 Setup
 1. Get a YouTube Data API key from Google Cloud Console.
